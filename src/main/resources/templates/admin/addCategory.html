@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="admin/base::Layout(~{::main})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">Add Category</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">Categories</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">Add Category</a></li>
+        </ul>
+
+        <div class="info-data">
+            <div class="card">
+
+                <!-- <% String successMessage=(String) request.getAttribute("successMessage"); %>
+                    <% if (successMessage !=null) { %> -->
+                <div class="success-message">
+                    <!-- <%= successMessage %> -->
+                </div>
+                <!-- <% } %> -->
+
+                <div class="container">
+                    <h1 class="headAdd">Add Category</h1>
+
+                    <form th:action="@{addCategoryProcess}" method="post">
+
+                        <label for="cat-name" class="labelAdd">Category Name:</label>
+                        <input type="text" id="cat-name" name="cat_name">
+
+                        <button type="submit" class="btnAdd">Add Category</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!-- MAIN -->
+</body>
+
+</html>

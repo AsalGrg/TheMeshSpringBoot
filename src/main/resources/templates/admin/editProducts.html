@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="admin/base::Layout(~{::div})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <main>
+        <h1 class="title">Edit Product</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">Products</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">Edit Product</a></li>
+        </ul>
+
+        <div class="info-data">
+            <div class="card">
+                <div class="container">
+                    <h1 class="headAdd">Edit Products</h1>
+
+                    <!-- <%NameFromID ni=new NameFromID();%> -->
+
+                    <form th:action="@{'/admin/editProductProcess'}" method="post" enctype="multipart/form-data">
+
+                        <input type="text" name="product_id" th:value="${productDetails.product_id}" hidden />
+
+                        <label for="product-name" class="labelAdd">Product Name:</label>
+                        <input type="text" id="product-name" name="product_name"
+                            th:value="${productDetails.product_name}" />
+
+                        <label for="product-price" class="labelAdd">Product Price:</label>
+                        <input type="text" id="product-price" name="product_price"
+                            th:value="${productDetails.product_price}" />
+
+
+                        <label for="product-category" class="labelAdd">Product Category:</label>
+                        <select id="product-category" name="category_name">
+                            <option selected th:text="${categoryName}">
+                            </option>
+
+                            <div th:each="category: ${categoriesOpt}">
+                                <option th:text="${category.cat_name}"></option>
+                            </div>
+                        </select>
+
+
+
+                        <label for="product-brand" class="labelAdd">Product Brand:</label>
+                        <select id="product-brand" name="brand_name">
+                            <option selected th:text="${brandName}">
+                                <!-- <%=ni.getBrandName(product.getBrand_id())%> -->
+                            </option>
+                            <div th:each="brand: ${brandsOpt}">
+                                <option th:text="${brand.brand_name}"></option>
+                            </div>
+
+                        </select>
+
+
+                        <label for="product-gender" class="labelAdd">For Gender:</label>
+                        <select id="product-gender" name="gender_name">
+                            <option selected th:text="${genderName}">
+                                <!-- <%=ni.getGenderName(product.getGender_id())%> -->
+                            </option>
+                            <div th:each="gender: ${genderOpt}">
+                                <option th:text="${gender.gender_name}"></option>
+                            </div>
+                        </select>
+
+
+                        <label for="product-stock" class="labelAdd">Available Stock:</label>
+                        <input type="text" id="product-stock" name="stock" th:value="${productDetails.stock}" />
+
+                        <label for="product-description" class="labelAdd">Product Description:</label>
+                        <textarea id="product-description" name="product_desc"
+                            th:text="${productDetails.product_desc}"></textarea>
+
+                        <label for=" product-image1" class="labelAdd" style="margin-bottom: 40px;">Change Product
+                            Image 1:</label>
+                        <input type="file" id="product-image1" name="product-image1" />
+
+                        <label for="product-image2" class="labelAdd" style="margin-bottom: 40px;">Change Product
+                            Image 2:</label>
+                        <input type="file" id="product-image2" name="product-image2" />
+
+                        <label for="product-image3" class="labelAdd" style="margin-bottom: 40px;">Change Product
+                            Image 3:</label>
+                        <input type="file" id="product-image3" name="product-image3" />
+                        <!-- 
+                            <% HttpSession descriptionSession=request.getSession();
+                                descriptionSession.setAttribute("product_description",productDescription); }%> -->
+                        <button type="submit" class="btnAdd">Add Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="user/base::Layout(~{::div})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+</head>
+
+<body>
+
+    <div class="flex-box">
+        <div class="left">
+            <div class="big-img" style="height:470px;width:350px">
+                <img th:src="${productDesc.img_path1}" alt="product image" style="height:470px;width:350px">
+            </div>
+            <div class="images">
+                <div class="small-img">
+                    <img th:src="${productDesc.img_path1}" alt="product image" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img th:src="${productDesc.img_path2}" alt="product image" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img th:src="'/images/products/'+${productDesc.img_path3}" alt="product image"
+                        onclick="showImg(this.src)">
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="pname">
+                <span th:text="${productDesc.product_name}"></span>
+            </div>
+            <div class="ratings">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price">Rs <span th:text="${productDesc.product_price}"></span>
+            </div>
+            <div class="size">
+                <p>Size :</p>
+                <div class="psize">S</div>
+                <div class="psize">M</div>
+                <div class="psize">L</div>
+                <div class="psize">XL</div>
+                <div class="psize">XXL</div>
+            </div>
+            <div class="quantity">
+                <p>Description: <span th:text="${productDesc.product_desc}"></span>
+                </p>
+            </div>
+            <div class="btn-box">
+                <a th:href="${#ctx.session.user!=null} ? '/addToCarts/'+${product.product_id} : '/login'"><button
+                        class="cart-btn">Add to Cart</button></a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

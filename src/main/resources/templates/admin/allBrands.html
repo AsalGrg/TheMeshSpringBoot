@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="admin/base::Layout(~{::main})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <!-- MAIN -->
+    <main>
+        <h1 class="title">All Brands</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">Brands</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">All Brands</a></li>
+        </ul>
+
+        <div class="info-data" th:each=" brand: ${brands}">
+            <div class="listing-section">
+                <div class="product">
+                    <div class="image-box">
+                        <div class="images" id="image-1"
+                            th:style="'background-image:url('+ @{${brand.brand_image}} +');'">
+                        </div>
+                    </div>
+                    <div class="text-box">
+                        <h4 class="item">Brand Name: <span th:text="${brand.brand_name}"></span>
+                        </h4>
+                    </div>
+                    <!-- <input type="text" name="item-1-quantity" id="item-1-quantity" value="1"> -->
+                    <!-- <button type="button" name="item-1-button" id="item-1-button">Add to Cart</button> -->
+
+                    <!-- Modals for editing and deleting products -->
+                    <!-- 
+                    <form
+                        action="${pageContext.request.contextPath}/AdminUpdateBrands?updateBtn=<%=brand.getBrand_id()%>"
+                        method="post" style="padding: 2%;border: none; border-radius: 2%;">
+                        <button type="submit" name="buttons" id="updateBtn"
+                            style="background-color:#23C552;border-radius: 8px;color:white">Edit Product</button>
+                    </form>
+                    <form
+                        action="${pageContext.request.contextPath}/AdminDeleteBrands?deleteBtn=<%=brand.getBrand_id()%>"
+                        method="post" style="padding: 2%;border: none; border-radius: 2%;">
+                        <button type="submit" name="buttons" id="updateBtn"
+                            style="background-color:#F84F31;border-radius: 8px;color:white">Delete Product</button>
+                    </form> -->
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

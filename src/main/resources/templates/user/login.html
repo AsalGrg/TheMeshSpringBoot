@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="user/base::Layout(~{::div})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+</head>
+
+<body>
+    <!-- code for login page starts here-->
+    <div class="signup-body">
+        <div class="alert alert-danger text-center" role="alert" th:if="${#ctx.session.loginFailedMsg}!=null"
+            th:text="${#ctx.session.loginFailedMsg}">
+            A simple primary alert—check it out!
+            <th:block th:inline="text" th:text="${#ctx.session.removeAttribute('loginFailedMsg')}"></th:block>
+        </div>
+        <div class="container-sign" style="width: 26%; height: 436.5px;">
+            <div class="title">Log In</div>
+
+            <div class="content">
+                <form th:action="@{/loginProcess}" method="post">
+                    <div class="user-details" style="flex-direction: column;">
+                        <div class="input-box">
+                            <span class="details">Email</span>
+                            <input style="width: 239%;" type="email" placeholder="Enter your email" name="email"
+                                required>
+                        </div>
+
+                        <div class="input-box">
+                            <span class="details">Password</span>
+                            <input style="width: 239%;" type="password" placeholder="Enter your password"
+                                name="password" required>
+                        </div>
+                        <div class="button">
+                            <input class="Login-button" style="font-weight: bold;" type="submit" value="Log In">
+                        </div>
+                        <div class="existing-acc">
+                            <p>Don't have a account? <a th:href="@{/signup}">Register</a></p>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

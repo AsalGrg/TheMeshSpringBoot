@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="admin/base::Layout(~{::main})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <h1 class="title">Add Products</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#">Products</a></li>
+            <li class="divider">/</li>
+            <li><a href="#" class="active">Add Products</a></li>
+        </ul>
+
+        <div class="info-data">
+            <div class="card">
+                <div class="container">
+                    <h1 class="headAdd">Add Products</h1>
+
+
+                    <form th:action="@{addProductProcess}" method="post" enctype="multipart/form-data">
+
+                        <label for="product-name" class="labelAdd">Product Name:</label>
+                        <input type="text" id="product-name" name="product_name" />
+
+                        <label for="product-price" class="labelAdd">Product Price:</label>
+                        <input type="text" id="product-price" name="product_price" />
+
+
+
+                        <label for="product-category" class="labelAdd">Product Category:</label>
+                        <select id="product-category" name="category_name">
+                            <option selected disabled value="">Select Category</option>
+                            <div th:each=" cat: ${categories}">
+                                <option th:text="${cat.cat_name}"></option>
+                            </div>
+
+                        </select>
+
+
+
+                        <label for="product-brand" class="labelAdd">Product Brand:</label>
+                        <select id="product-brand" name="brand_name">
+                            <option selected disabled value="">Select Brand</option>
+                            <div th:each=" brand: ${brands}">
+                                <option th:text="${brand.brand_name}"></option>
+                            </div>
+                        </select>
+
+
+
+
+                        <label for="product-gender" class="labelAdd">For Gender:</label>
+                        <select id="product-gender" name="gender_name">
+                            <option selected disabled value="">Select Gender</option>
+                            <div th:each=" gender: ${genders}">
+                                <option th:text="${gender.gender_name}"></option>
+                            </div>
+                        </select>
+
+
+                        <label for="product-stock" class="labelAdd">Available Stock:</label>
+                        <input type="text" id="product-stock" name="stock" />
+
+                        <label for="product-description" class="labelAdd">Product Description:</label>
+                        <textarea id="product-description" name="product_desc"></textarea>
+
+                        <label for="product-image1" class="labelAdd" style="margin-bottom: 40px;">Product Image
+                            1:</label>
+                        <input type="file" id="product-image1" name="product-image1" />
+
+                        <label for="product-image2" class="labelAdd" style="margin-bottom: 40px;">Product Image
+                            2:</label>
+                        <input type="file" id="product-image2" name="product-image2" />
+
+                        <label for="product-image3" class="labelAdd" style="margin-bottom: 40px;">Product Image
+                            3:</label>
+                        <input type="file" id="product-image3" name="product-image3" />
+
+
+                        <button type="submit" class="btnAdd">Add Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

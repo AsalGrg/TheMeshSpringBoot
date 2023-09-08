@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="user/base::Layout(~{::div})">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+</head>
+
+<body>
+    <div class="small-container" th:if="${not #lists.isEmpty(cartDetails)}">
+        <h3 style="font-size:30px; text-align: center;">My Carts</h3>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th></th>
+                <th style="padding-right: 20px;" colspan="2">Subtotal</th>
+                <th style="padding-right: 20px;" colspan="2">Options</th>
+            </tr>
+
+            <!-- repeating element starts here -->
+            <tr th:each=" cart: ${cartDetails}" th:if="${cart.isOrdered}==false">
+
+                <td class="p-in-cart">
+                    <div class="cart-info">
+                        <img th:src="${cart.product.img_path1}">
+                        <div class="cart-product">
+                            <p style="margin-top: 18px;">
+                                <span th:text="${cart.product.product_name}"></span>
+                            </p>
+
+                        </div>
+
+                    </div>
+                </td>
+                <td class="p-in-cart">
+                    <p>
+                        Rs <span th:text="${cart.price}"></span>
+                    </p>
+                </td>
+
+                <td class="quantity">
+
+                    <p th:text="${cart.getQuantity}">
+
+                    </p>
+
+                </td>
+                <td style="text-align: center;">
+                    <div class="remove-table">
+                        <a th:href="@{'/removeItem/'+${cart.order_item_id}}"><button
+                                class="remove-button">remove</button></a>
+                    </div>
+                </td>
+                <td class="p-in-cart" style="padding-right: 30px;">
+
+                    <p> Rs <span th:text="${cart.grandTotal}"></span>
+
+                    </p>
+                </td>
+
+                <td colspan="2"><a th:href="@{'/buyNow/'+${cart.order_item_id}}"><button class="BuyNow">Buy
+                            Now</button></a></td>
+            </tr>
+            <!-- repeating element ends heere -->
+
+
+        </table>
+
+    </div>
+
+    <div class="small-container" th:unless="${not #lists.isEmpty(cartDetails)}">
+        <h3 style="font-size:30px; text-align: center;">Your Cart is Empty, please add some products :]</h3>
+    </div>
+
+
+</body>
+
+</html>
